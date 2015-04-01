@@ -1,0 +1,28 @@
+16/08/2006
+    - I deleted some useless flags (like -b)
+    - By default flood random dports.
+    - Source code is much cleaner now.
+    - Second startup argument is now target, instead of -d flag.
+    - Version 0.3 released.
+
+22/12/2005
+    - Version 0.2a released.
+
+21/12/2005
+    - Use __FAVOR_BSD in udp.h
+    - Use struct ip instead of struct iphdr
+    - Changed daemon to fork.
+    - Removed mempcpy.
+    - included <netinet/in_systm.h>
+    - fudp works now on *BSD systems.
+
+19/12/2005
+    - changed linux/ip.h to netinet/ip.h
+    - changed linux/udp.h to netinet/udp.h
+    - Keep same UDP sport as dport in land attack.
+    - added some new comments.
+
+8/12/2005
+    - command line interpreter did not check argv for NULL pointer.
+    - Added Land UDP attack.
+    - Randomly generated source port in all root-need commands.

@@ -1,0 +1,59 @@
+1) About
+
+	fudp is a simple and very easy to use UDP flooding utility, with
+	some nice features, like source ip spoofing, land udp attack and
+	others. Currently works on linux and *BSD systems. By default fudp
+	floods random destination ports on target, but if you want, you can
+	specify destination port with [-p] flag.
+
+
+2) Compilation
+
+	To compile, type:
+	$ make
+	Binary file is named `fudp`.
+
+
+3) fudp feautres
+
+	flags:
+        	-1              :: send one dgram and exit
+        	-p <port>       :: destination port (by default random for each
+        			   dgram)
+		-z <size>       :: dgram data size (default 10)
+		-t <time>       :: fudp life time (in seconds)
+
+	only root:
+		-r              :: random source IP for each dgram
+		-s <source>     :: set source IP
+		-l              :: land attack
+
+
+4) Examples (tcpdump -qt -i lo -n proto UDP)
+
+	$ ./fudp -1 localhost
+	IP 127.0.0.1.1024 > 127.0.0.1.50695: UDP, length 10
+
+	$ ./fudp -1 -p 53 -z 100 localhost
+	IP 127.0.0.1.1024 > 127.0.0.1.53: UDP, length 100
+
+	$ ./fudp -r -1 -p 53 localhost
+	IP 39.125.210.125.1961 > 127.0.0.1.53: UDP, length 10
+
+	$ ./fudp -s 111.111.111.111 -1 -p 53 localhost
+	IP 111.111.111.111.52371 > 127.0.0.1.53: UDP, length 10
+
+	$ ./fudp -l -1 -p 53 localhost
+	IP 127.0.0.1.53 > 127.0.0.1.53: UDP, length 10
+
+	$ ./fudp -r -p 53 localhost
+	IP 86.84.130.74.54441 > 127.0.0.1.53: UDP, length 10
+	IP 9.147.165.34.51586 > 127.0.0.1.53: UDP, length 10
+	IP 36.146.157.113.35088 > 127.0.0.1.53: UDP, length 10
+	IP 173.0.205.13.49571 > 127.0.0.1.53: UDP, length 10
+	IP 72.22.187.92.13877 > 127.0.0.1.53: UDP, length 10
+	IP 27.135.25.9.50418 > 127.0.0.1.53: UDP, length 10
+	IP 139.190.83.90.24382 > 127.0.0.1.53: UDP, length 10
+	IP 12.215.147.54.13217 > 127.0.0.1.53: UDP, length 10
+	IP 135.237.116.117.17462 > 127.0.0.1.53: UDP, length 10
+	IP 69.129.225.45.7265 > 127.0.0.1.53: UDP, length 10
