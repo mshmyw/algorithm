@@ -81,8 +81,8 @@ int main()
             c[0][j] = cost[0];
     
     // fucntion call
-	/* knapsack(N, w); */
-    knapsack_recur(1, w);
+	knapsack(N, w);
+    /* knapsack_recur(1, w); */
     
     for(i = 0; i < N; i++){
         for(j = 0; j <= w; j++)
