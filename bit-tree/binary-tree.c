@@ -107,6 +107,34 @@ STATUS level_traverse(BIT_TREE t){
    return OK;
 }
 
+STATUS level_traverse_2(BIT_TREE t){
+    QUEUE q;
+    QUEUE *qp;
+    element_type_queue bit_node;
+    int level = 0;
+
+    qp = &q;
+    init_queue(qp);
+
+    en_queue(qp, t);
+
+   while(is_empty_queue(qp) == FALSE){
+       int current_level_count = length_queue(qp);
+       int i;
+       for(i = 0; i < current_level_count; i++){
+           de_queue(qp, &bit_node);
+           printf("%c ", bit_node->data);
+           if(bit_node->lchild)en_queue(qp, bit_node->lchild);
+           if(bit_node->rchild)en_queue(qp, bit_node->rchild);
+       }
+
+       level++;
+}
+   printf("\nlevel_2 %d\n", level);
+
+   return OK;
+}
+
 int main(void){
     BIT_TREE t = NULL;
 
@@ -133,5 +161,7 @@ int main(void){
         printf("\n");
     }
 
+    printf("------\n");
+    level_traverse_2(t);
    return 0;
 }
