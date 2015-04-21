@@ -66,18 +66,31 @@ STATUS pre_order_no_recur_traverse(BIT_TREE t){
     return OK;
 }
 
+void level_recur_traverse(BIT_TREE t, QUEUE *qarray, int level){
+    if(!t) return;
+
+    en_queue(&qarray[level], t); //record the current,and use the qarray to keep the value
+
+    if(t->lchild)
+        level_recur_traverse(t->lchild, qarray, level + 1);
+    if(t->rchild)
+        level_recur_traverse(t->rchild, qarray, level + 1);
+
+    return;
+}
+
 STATUS level_traverse(BIT_TREE t){
     QUEUE q;
     QUEUE *qp;
     element_type_queue bit_node, flag_node;
-    int level = -1;
+    int level = 0;
     qp = &q;
     init_queue(qp);
     flag_node = malloc(sizeof(BIT_NODE));
     flag_node->data = -9;
     flag_node->lchild = flag_node->rchild = NULL;
-    en_queue(qp, flag_node); //as flag of every level
     en_queue(qp, t);
+    en_queue(qp, flag_node); //as flag of every level
 
    while(is_empty_queue(qp) == FALSE){
         de_queue(qp, &bit_node);
@@ -107,5 +120,18 @@ int main(void){
     printf("\n--level traverse----\n");
     level_traverse(t);
     printf("\n");
+
+    QUEUE qarray[8];
+
+    int i;
+    for(i = 0; i < 8; i++)
+        init_queue(&qarray[i]);
+
+    level_recur_traverse(t, qarray, 0);
+    for(i = 0; i < 8; i++){
+        traverse_queue(&qarray[i]);
+        printf("\n");
+    }
+
    return 0;
 }
