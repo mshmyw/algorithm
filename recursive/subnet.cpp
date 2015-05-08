@@ -13,11 +13,29 @@ void subnets(vector<int> &s, vector<int> temp, int level,
         result.push_back(temp);
         return;
     }
-
-    subnets(s, temp, level + 1, result);
     temp.push_back(s[level]);
     subnets(s, temp, level + 1, result);
+    temp.pop_back();
+    subnets(s, temp, level + 1, result);
 }
+
+void subnets_for(vector<int> &s, vector<int> temp, int level,
+                 vector< vector<int> > &result){
+    if(level == s.size()){
+        result.push_back(temp);
+        return;
+    }
+    int i;
+    for(i = level; i < s.size(); i++){
+        temp.push_back(s[i]);
+        subnets(s, temp, i + 1, result);
+        temp.pop_back();
+    }
+
+    subnets(s, temp, i, result);  // NULL set , the null set
+
+}
+
 
 // 位运算
 // 求子集问题就是求组合问题。数组中的n个数可以用n个二进制位表示，当某一位为1表示选择对应的数，为0表示不选择对应的数。
@@ -73,25 +91,34 @@ vector< vector<int> > subsets_bit(vector<int> &S,int n){
 
     }
 
+void print_iterator(vector< vector<int> > result){
+    vector< vector<int> >::iterator it;
+    vector<int>::iterator it_inner;
+
+    for(it = result.begin(); it != result.end(); it++){
+        for(it_inner = (*it).begin(); it_inner != (*it).end(); it_inner++)
+            cout<<*it_inner;
+        cout<<endl;
+    }
+
+}
 
 
 int main(void){
-    int array[] = {1, 2, 3, 4};
+    int array[] = {1, 2};
     int n = sizeof(array) / sizeof(array[0]);
     vector<int> s(array, array + n);
     vector< vector<int> > result;
     vector<int> temp;
-    // subnets(s, temp, 0, result);
+    subnets(s, temp, 0, result);
+    print_iterator(result);
+    printf("-----\n");
+    vector< vector<int> > resul;
+    subnets_for(s, temp, 0, resul);
+    print_iterator(resul);
     // result = subsets_bit(s, n);
-    result = combinationSum2(s, 7);
-    vector< vector<int> >::iterator it;
-    vector<int>::iterator it_inner;
-    for(it = result.begin(); it != result.end(); it++){
-        for(it_inner = (*it).begin(); it_inner != (*it).end(); it_inner++)
-            cout<<*it_inner;
 
-        cout<<endl;
-    }
+    // result = combinationSum2(s, 7);
 
     return 0;
 }
