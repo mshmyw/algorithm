@@ -37,6 +37,7 @@ void swap(int *a, int *b){
 int single_number(int a[], int n) {
 	int i, j, res;
 	int count;
+
 	// bit operate is the essence of the computer, because its the way of computer thinking 
 	res = 0;
 	for(i = 0; i < 32; i++){
@@ -48,6 +49,7 @@ int single_number(int a[], int n) {
 		count = count % 3;
 		res |= count << i;
 	}
+	
 	printf("res %d\n", res);
 	return res;
 }
@@ -56,7 +58,7 @@ int single_number(int a[], int n) {
 int main()
 {
     // stock prices on consecutive days
-    int A[] = {3, 3, 4, 4, 5, 5, 4, 8, 5, 3};
+    int A[] = {3, 3, 4, 4, 5, 5, 4, 9, 5, 3};
     int n = sizeof(A)/sizeof(A[0]);  //dynamic get it;
 	
     // fucntion call

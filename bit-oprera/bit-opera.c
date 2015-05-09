@@ -127,37 +127,22 @@ int a_b_add(int x, int y){
     return sum;
 }
 
+int* gray_code(int n, int* returnSize) {
+    int num = 1 << n;
+    int *gray = malloc(sizeof(int) * num);
+    int i;
+    for(i = 0; i < num; i++)
+        gray[i] = (i >> 1) ^ i;
+
+    *returnSize = num;
+    return gray;
+}
+
 int main()
 {
-    unsigned int num[] = {3, 2, 4};
-    unsigned int n = sizeof(num) / sizeof(num[0]);
-    unsigned int i;
-    unsigned int rnum;
-    for(i = 0; i < n; i++){
-        rnum = reverse_bit(num[i]);
-        printf("(%u, %u)\n", num[i], rnum);
-    }
-
-    unsigned int x = 6;
-    int lzc = leading_zero_count(x);
-    printf("\nlzc: %d\n", lzc);
-    int tzc = trailing_zero_count(x);
-    printf("\ntzc: %d\n", tzc);
-
-    printf("abs: %d\n", abs_negative(-3));
-
-    unsigned int xx = 0b00111101001111011111110100111101;
-    unsigned int count_1_length = longest_1_bits_string(xx);
-    printf("longest 1 bits string %u \n", count_1_length);
-
-    printf("average: %d\n", average(4, 12));
-
-    printf("min_2 %d\n", min_2(12, 23));
-
-    /* int sum = a_b_add(4, 5); */
-    int sum = add_recur(4, -5);
-    printf("sum %d\n", sum);
-
+    int num = 0;
+    gray_code(1, &num);
+    printf("i: %d\n", num);
     return 0;
 }
 

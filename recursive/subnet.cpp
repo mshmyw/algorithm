@@ -62,7 +62,7 @@ vector< vector<int> > subsets_bit(vector<int> &S,int n){
     return result;
 }
 
-  void find_comb_sum(vector<int> &candidates, int start, int target, vector<int> &sol, vector<vector<int> > &allSol){
+void find_comb_sum(vector<int> &candidates, int start, int target, vector<int> &sol, vector<vector<int> > &allSol){
         if(target == 0){
             allSol.push_back(sol);
             return;
@@ -80,7 +80,7 @@ vector< vector<int> > subsets_bit(vector<int> &S,int n){
 
     }
 
- vector<vector<int> > combinationSum2(vector<int>& candidates, int target) {
+vector<vector<int> > combinationSum2(vector<int>& candidates, int target) {
         vector<vector<int> > allSol;
         vector<int> sol;
         if(candidates.empty()) return allSol;
@@ -105,7 +105,7 @@ void print_iterator(vector< vector<int> > result){
 
 
 int main(void){
-    int array[] = {1, 2};
+    int array[] = {1, 2, 3, 4};
     int n = sizeof(array) / sizeof(array[0]);
     vector<int> s(array, array + n);
     vector< vector<int> > result;

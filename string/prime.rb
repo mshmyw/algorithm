@@ -7,9 +7,10 @@
 def is_prime?(n)
     t = 2
     while (t <= Math.sqrt(n).to_i)
-        if (n % t == 0)
-            return false
-        end
+      if (n % t == 0)
+        # puts n.to_s + "->" + t.to_s
+        return false
+      end
         t = t + 1
     end
     if n <= 1
@@ -57,15 +58,24 @@ def get_prime(n1,n2)
     end
     return result
 end
-
-puts "请输入两个数并按回车键(格式为a b)："
-while true
-    num = gets.split(" ")
-    n1 = num[0].to_i
-    n2 = num[1].to_i
-    result = get_prime(n1,n2)
-    result.each{|i|
-        print i," "
-    }
-    puts
+result = [7, 277, 2777, 7727, 72727, 727272727, 72727272727272727, 72277, 27277, 22777]
+for num in result
+  if is_prime?(num)
+    puts num.to_s + " is prime"
+  elsif
+    puts num.to_s + " not  prime"
+  end
 end
+
+
+# puts "请输入两个数并按回车键(格式为a b)："
+# while true
+#     num = gets.split(" ")
+#     n1 = num[0].to_i
+#     n2 = num[1].to_i
+#     result = get_prime(n1,n2)
+#     result.each{|i|
+#         print i," "
+#     }
+#     puts
+# end

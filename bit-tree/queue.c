@@ -55,7 +55,7 @@ void traverse_queue(QUEUE *q){
     assert(q->front != NULL);
     PNODE p = q->front->next;
     while(p){
-		printf("%c \n", p->node->data);
+		printf("%c ", p->node->data);
         p = p->next;
     }
 }

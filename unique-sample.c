@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int s[10];
+int s[5];
 
 int rand_int(double left,  double right){
 	int T;
@@ -33,8 +33,8 @@ int main(void){
 	int i;
 	
 	srand((int)time(0)); 	
-	my_sample(9, 10);
-	for(i = 0; i < 10; i++)
+	my_sample(5, 10);
+	for(i = 0; i < 5; i++)
 		printf("%d ", s[i]);
 	return 0;
 }
