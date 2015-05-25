@@ -1,0 +1,225 @@
+#include <net-snmp/net-snmp-config.h>
+#include <net-snmp/net-snmp-includes.h>
+
+#include "msh_ipRouteTable.h"
+
+/* --- variable--- */
+msh_route_table RTable[MAX_ROUTE_ENTRY];  //global variable, store all the route table element
+msh_route_table *rtablep;
+int route_entry_count;  // record the number of the row in the route table 
+int rt_idx;  //index with the route table
+
+/*
+ * a list of hosts to query
+ */
+struct host {
+	const char *name;
+	const char *community;
+} hosts[] = {
+	{ "192.168.1.114",		"public" },    //VMware
+	{ "192.168.1.108",		"public" },    //msh
+	//	{ "192.168.1.113",		"public" },    //gchch 
+	{ NULL }
+};
+
+/*
+ * a list of variables to query for
+ */
+struct oid {
+	const char *Name;
+	oid Oid[MAX_OID_LEN];
+	int OidLen;
+}oids[] = {
+   	{ "1.3.6.1.2.1.4.21.1.1" },    //ipRouteDest
+	{ "1.3.6.1.2.1.4.21.1.7" },    //ipRouteNextHop
+	{ "1.3.6.1.2.1.4.21.1.8" },    //ipRouteType
+	{ "1.3.6.1.2.1.4.21.1.11" },   //ipRouteMask
+	/* { "1.3.6.1.2.1.4.20.1.1" },   //route port ip address */
+	/* { "1.3.6.1.2.1.4.20.1.2" },   //route port index */
+	/* { "1.3.6.1.2.1.4.20.1.3" },   //route port subnet mask */
+	{ NULL }
+};
+
+/* ---function--- */
+
+/*
+ * initialize
+ */
+void initialize (void)
+{
+	struct oid *op = oids;
+  
+	/* Win32: init winsock */
+	SOCK_STARTUP;
+
+	/* initialize library */
+	init_snmp("asynchapp");
+
+	/* parse the oids */
+	while (op->Name) {
+		op->OidLen = sizeof(op->Oid)/sizeof(op->Oid[0]);
+		if (!read_objid(op->Name, op->Oid, &op->OidLen)) {
+			snmp_perror("read_objid");
+			exit(1);
+		}
+		op++;
+	}
+}
+
+/*
+ * simple printing of returned data
+ */
+int print_result (int status, struct snmp_session *sp, struct snmp_pdu *pdu, int pre_index)
+{
+	char buf[1024];
+	struct variable_list *vp;
+	int ix;
+	switch (status) {
+	case STAT_SUCCESS:
+		vp = pdu->variables;
+		if (pdu->errstat == SNMP_ERR_NOERROR) {
+			if(vp->name[9] == pre_index)
+				{
+					snprint_value(buf, sizeof(buf), vp->name, vp->name_length, vp);
+					//snprint_variable(buf, sizeof(buf), vp->name, vp->name_length, vp);
+					//			fprintf(stdout, "%s-> %s\n", sp->peername, buf);
+		
+					char KeyIp[128] = "IpAddress: ";
+					char TypeIndir[128] = "indirect";
+					char *bufp = buf;
+
+					/* printf("pre_index %d\n", pre_index); */
+					switch(pre_index)
+						{
+						case 1:    //ipRouteDest
+							{
+								bufp += strlen(KeyIp);				
+								//printf("RDest    %s\n", bufp);
+								strncpy(rtablep->ipRouteDest, bufp, strlen(bufp));
+								rt_idx++;
+								rtablep++;
+								break;
+							}
+						case 7:    //ipRouteNextHop
+							{
+								bufp += strlen(KeyIp);
+								/* printf("RNextHop %s\n", bufp); */
+								strncpy(rtablep->ipRouteNextHop, bufp, strlen(bufp));
+								rt_idx++;
+								rtablep++;
+								break;
+							}
+						case 8:    //ipRouteType
+							{
+								if(strstr(buf, TypeIndir) != NULL)
+									rtablep->ipRouteType = ROUTE_INDIRECT;
+								else
+									rtablep->ipRouteType = ROUTE_DIRECT;
+								/* printf("RType    %lu\n", rtablep->ipRouteType); */
+								rt_idx++;
+								rtablep++;
+								break;
+							}
+						case 11:    //ipRouteMask
+							{
+								bufp += strlen(KeyIp);				
+								/* printf("RMask    %s\n", bufp); */
+								strncpy(rtablep->ipRouteMask, bufp, strlen(bufp));
+								rt_idx++;
+								rtablep++;
+								break;
+							}
+						default:
+							printf("Switch may be wrong...\n");
+						}
+				}
+		}
+		else {
+			for (ix = 1; vp && ix != pdu->errindex; vp = vp->next_variable, ix++)
+				;
+			if (vp) snprint_objid(buf, sizeof(buf), vp->name, vp->name_length);
+			else strcpy(buf, "(none)");
+			fprintf(stdout, "%s: %s: %s\n",
+					sp->peername, buf, snmp_errstring(pdu->errstat));
+		}
+		return 1;
+	case STAT_TIMEOUT:
+		fprintf(stdout, "%s: Timeout\n", sp->peername);
+		return 0;
+	case STAT_ERROR:
+		snmp_perror(sp->peername);
+		return 0;
+	}
+	return 0;
+}
+// print the route table 
+void print_route_table_entry(){
+	int i, j;
+	printf("ipRouteDest     ipRouteNextHop  ipRouteMask      ipRouteType\n");
+	for(i = 0; i < route_entry_count; i++){
+		printf("%s", RTable[i].ipRouteDest);
+		for(j = 0; j < PRINT_WIDTH - strlen(RTable[i].ipRouteDest); j++)
+			printf(" ");
+		printf("%s", RTable[i].ipRouteNextHop);
+		for(j = 0; j < PRINT_WIDTH - strlen(RTable[i].ipRouteNextHop); j++)
+			printf(" ");
+		printf("%s", RTable[i].ipRouteMask);
+		for(j = 0; j < PRINT_WIDTH - strlen(RTable[i].ipRouteMask); j++)
+			printf(" ");
+		printf(" %lu\n", RTable[i].ipRouteType);
+	}
+
+	return;
+}
+
+/*****************************************************************************/
+
+/*
+ * simple synchronous loop
+ */
+void synchronous(void)
+{
+	struct host *hp;
+
+	for (hp = hosts; hp->name; hp++) {
+		struct snmp_session ss, *sp;
+		struct oid *op;
+		printf("--%s--\n", hp->name);
+		snmp_sess_init(&ss);			/* initialize session */
+		ss.version = SNMP_VERSION_2c;
+		ss.peername = strdup(hp->name);
+		ss.community = strdup(hp->community);
+		ss.community_len = strlen(ss.community);
+		if (!(sp = snmp_open(&ss))) {
+			snmp_perror("snmp_open");
+			continue;
+		}
+		for (op = oids; op->Name; op++){
+			struct snmp_pdu *req, *resp;
+			int status;
+			req = snmp_pdu_create(SNMP_MSG_GETNEXT);
+			snmp_add_null_var(req, op->Oid, op->OidLen);
+			int pre_index = op->Oid[9];
+			status = snmp_synch_response(sp, req, &resp);
+			if (!print_result(status, sp, resp, pre_index)) break;
+			struct variable_list *vp = resp->variables;
+			snmp_free_pdu(resp);
+		
+			while(1){
+				req = snmp_pdu_create(SNMP_MSG_GETNEXT);
+				snmp_add_null_var(req, vp->name, vp->name_length);
+				pre_index = vp->name[9];
+				status = snmp_synch_response(sp, req, &resp);
+				if (!print_result(status, sp, resp, pre_index)) break;
+				vp = resp->variables;
+				if(vp->name[9] != pre_index)break;
+				snmp_free_pdu(resp);
+			}
+			route_entry_count = rt_idx;
+			rt_idx = 0;    //reset rt_idx;
+			rtablep = RTable; // reset route pointer 
+		}
+		snmp_close(sp);
+		print_route_table_entry(); //TODO: just store a host route table, but didn't store all!
+	}
+}
