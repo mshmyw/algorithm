@@ -1,0 +1,52 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("d:/WorkApp/emacs-bin-w64-24.4/emacs/" . "bin/")
+ ("d:/WorkApp/emacs-bin-w64-24.4/" . "emacs/")
+ ("d:/" . "360Downloads/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "d:/WorkApp/emacs-bin-w64-24.4/emacs/bin/work/"
+ "c:/Users/msh/AppData/Roaming/.emacs.d/lisp/"
+ "c:/Users/msh/AppData/Roaming/.emacs.d/"
+ "~/.emacs.d/"
+ "d:/WorkApp/emacs-bin-w64-24.4/emacs/bin/"
+ "d:/360Downloads/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "2UTF8_py3.py"
+ "LICENSE"
+ "addpm.exe"
+ "defrag.dat"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("d:/360Downloads/" (21798 33261 0 0) "HotFix/" "defrag.dat" "#defrag.dat#" "../" "./")
+
+ ("d:/WorkApp/emacs-bin-w64-24.4/emacs/bin/work/" (21799 10122 0 0) "雨果.org" "words.org~" "words.org" "tcp-cap.c~" "tcp-cap.c" "task_struct.c~" "task_struct.c" "sscanf.c~" "sscanf.c" "scale.org~" "scale.org" "reversse.exe" "reverse.exe" "province.china~" "province.china" "order-byte.exe" "order-byte.c~" "order-byte.c" "myscanf.exe" "mshtxt.back~" "mshtxt.back" "msh-1.txt~" "msh-1.txt" "info.xml~" "info.xml" "encode-decode.py~" "encode-decode.py" "del-space-line.rb~" "del-space-line.rb" "decimal-hex.pl" "csapp-reverse.c~" "csapp-reverse.c" "code-assemly.s" "code-assemly.c~" "code-assemly.c" "CN.txt~" "CN.txt" "abstract.msh~" "abstract.msh" "2UTF8_py3.py~" "2UTF8_py3.py" "../" "./")
+
+ ("c:/Users/msh/AppData/Roaming/.emacs.d/" (21799 10122 0 0) "smex-items" "server/" "README.md" "lisp/" "LICENSE" "init.el" "ido.last" "history" "eshell/" "elpa/" "custom.el" "auto-save-list/" "ac-comphist.dat" ".smex-items" ".session" ".gitignore" ".emacs.desktop" ".agignore" "../" "./")
+
+ ("~/.emacs.d/" (21799 10122 0 0) "smex-items" "server/" "README.md" "lisp/" "LICENSE" "init.el" "ido.last" "history" "eshell/" "elpa/" "custom.el" "auto-save-list/" "ac-comphist.dat" ".smex-items" ".session" ".gitignore" ".emacs.desktop" ".agignore" "../" "./")
+
+ ("c:/Users/msh/AppData/Roaming/.emacs.d/lisp/" (21798 34972 0 0) "init-windows.el" "init-utils.el" "init-uniquify.el" "init-themes.el" "init-textile.el" "init-spelling.el" "init-slime.el" "init-site-lisp.el" "init-sessions.el" "init-recentf.el" "init-python-mode.el" "init-proxies.el" "init-paredit.el" "init-org.el" "init-mmm.el" "init-misc.el" "init-markdown.el" "init-locales.el" "init-local.el" "init-lisp.el" "init-ledger.el" "init-isearch.el" "init-ido.el" "init-ibuffer.el" "init-html.el" "init-hippie-expand.el" "init-gui-frames.el" "init-grep.el" "init-github.el" "init-git.el" "init-frame-hooks.el" "init-fonts.el" "init-flyspell.el" "init-flycheck.el" "init-exec-path.el" "init-erlang.el" "init-elpa.el" "init-editing-utils.el" "init-dired.el" "init-dash.el" "init-darcs.el" "init-crontab.el" "init-compile.el" "init-compat.el" "init-common-lisp.el" "init-benchmarking.el" "init-auto-complete.el" ".dir-locals.el" "../" "./")
+
+ ("d:/$RECYCLE.BIN/" (21549 9157 0 0) "S-1-5-21-2953023293-4080534497-2971884060-1000/" "S-1-5-21-2188546620-953203708-2547929884-1000/" "../" "./")
+
+ ("d:/WorkApp/" (21785 15257 0 0) "Youdao/" "Wireshark/" "VM/" "TortoiseSVN/" "Subversion/" "Source Insight 3/" "RubyMine 7.0.2/" "Ruby21-x64/" "rails/" "python34/" "PostgreSQL/" "Petri/" "Perl64/" "nc/" "goagent-goagent-v3.2.1-9-gcf4b06c/" "github/" "gDrive/" "gae3.2.3/" "Foxit Software/" "Evernote/" "EndNoteX7/" "emacs-bin-w64-24.4/" "emacs-24.3-bin-i386/" "CodeBlocks/" "baidu/" "Amazon/" "../" "./")
+
+ ("d:/WorkApp/emacs-bin-w64-24.4/" (21577 41134 0 0) "emacs/" "../" "./")
+
+ ("d:/WorkApp/emacs-bin-w64-24.4/emacs/" (21573 53784 0 0) "var/" "share/" "libexec/" "bin/" "../" "./")
+
+ ("d:/WorkApp/emacs-bin-w64-24.4/emacs/bin/" (21583 19814 0 0) "zlib1.dll" "work/" "runemacs.exe" "libXpm-noX4.dll" "libxml2-2.dll" "libwinpthread-1.dll" "libtiffxx-5.dll" "libtiff-5.dll" "librsvg-2-2.dll" "libpng16-16.dll" "libpixman-1-0.dll" "libpangowin32-1.0-0.dll" "libpangoft2-1.0-0.dll" "libpangocairo-1.0-0.dll" "libpango-1.0-0.dll" "liblzma-5.dll" "libjpeg-8.dll" "libjbig-0.dll" "libintl-8.dll" "libiconv-2.dll" "libharfbuzz-icu-0.dll" "libharfbuzz-gobject-0.dll" "libharfbuzz-0.dll" "libgomp-1.dll" "libgobject-2.0-0.dll" "libgnutlsxx-28.dll" "libgnutls-openssl-27.dll" "libgnutls-28.dll" "libgmodule-2.0-0.dll" "libglib-2.0-0.dll" "libgio-2.0-0.dll" "libgif-7.dll" "libgdk_pixbuf-2.0-0.dll" "libgcc_s_seh-1.dll" "libfreetype-6.dll" "libfontconfig-1.dll" "libffi-6.dll" "libexpat-1.dll" "libdbus-1-3.dll" "libcroco-0.6-3.dll" "libcairo-script-interpreter-2.dll" "libcairo-gobject-2.dll" "libcairo-2.dll" "libbz2-1.dll" "grep-changelog" "etags.exe" "emacsclientw.exe" "emacsclient.exe" "emacs.exe" "emacs-24.4.exe" "ebrowse.exe" "ctags.exe" "addpm.exe" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
