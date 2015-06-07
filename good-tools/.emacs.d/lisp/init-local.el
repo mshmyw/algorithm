@@ -87,10 +87,13 @@
 (auto-insert-mode)  ;;; 启用auto-insert
 ;; 默认情况下插入模版前会循问你要不要自动插入，这里设置为不必询问，
 ;; 在新建一个org文件时，自动插入`auto-insert-directory'目录下的`org-auto-insert`文件中的内容
-(setq auto-insert-query nil) 
+(setq auto-insert-query nil)
+
 (define-auto-insert "\\.org" "org-auto-insert")
 ;;这个就是新建以.c 结尾的C文件时，会自动插入c-auto-insert文件中的内容
 (define-auto-insert "\\.c" "c-auto-insert")
+;;这个就是新建以.cpp 结尾的cpp文件时，会自动插入cpp-auto-insert文件中的内容
+(define-auto-insert "\\.cpp" "cpp-auto-insert")
 
 (defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
   "expand auto-inserted content as yasnippet templete,

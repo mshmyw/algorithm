@@ -1,0 +1,12 @@
+//file name : `(buffer-name)`
+//created at: `(format-time-string "%c")`
+//author:  `user-full-name`
+
+#include<iostream>
+
+using namespace std;
+
+int main(void){
+
+    return 0;
+}
