@@ -1,3 +1,10 @@
+(require-package 'yasnippet)
+(require 'yasnippet)
+(setq yas/prompt-functions 
+      '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+(yas/global-mode 1)
+(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
+
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
@@ -21,8 +28,8 @@
 ;; hook AC into completion-at-point
 (defun sanityinc/auto-complete-at-point ()
   (when (and (not (minibufferp))
-	     (fboundp 'auto-complete-mode)
-	     auto-complete-mode)
+             (fboundp 'auto-complete-mode)
+             auto-complete-mode)
     #'auto-complete))
 
 (defun sanityinc/never-indent ()
@@ -60,6 +67,5 @@
   (< (buffer-size other-buffer) (* 1 1024 1024)))
 
 (setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
-
 
 (provide 'init-auto-complete)
