@@ -1,5 +1,6 @@
 #include "priority-queue.h"
 
+//based on heap
 int is_empty( PRIORITY_QUEUE pq){
     return pq->size == 0;
 }
