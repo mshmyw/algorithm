@@ -44,14 +44,26 @@ void print(int *a, int n){
 }
 
 void get_common_item(int *a, int m, int *b, int n){
-    int htable[256];
-    memset(htable, 0, sizeof(htable));
+    int max_num = -1;
     int i;
+    for(i = 0; i < m; i++)
+        max_num = max(max_num, a[i]);
+    for(i = 0; i < n; i++)
+        max_num = max(max_num, b[i]);
+
+    printf("max_num: %d\n", max_num);
+    int *htable = (int *)malloc(sizeof(int) * (max_num + 1));
+    memset(htable, 0, sizeof(htable) * (max_num + 1));
+
     for(i = 0; i < m; i++)
         htable[a[i]] = 1;
     for(i = 0; i < n; i++)
         if(htable[b[i]])
-            printf("%3d", b[i]);
+            printf("%d   ", b[i]);
+    printf("\n");
+
+    free(htable);
+    htable = NULL;
 
     return;
 }
@@ -59,7 +71,7 @@ int main(void){
 
     int a[] = {234, 3, 4, 9, 32, 7, 8, 5};
     int m = sizeof(a) / sizeof(a[0]);
-    int b[] = {1, 234, 10, 4, 9, 6, 2, 8, 32};
+    int b[] = {1, 2344, 10, 4, 234, 9, 6, 2, 8, 32};
     int n = sizeof(b) / sizeof(b[0]);
 
     get_common_item(a, m, b, n);
