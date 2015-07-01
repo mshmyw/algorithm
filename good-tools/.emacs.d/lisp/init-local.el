@@ -87,13 +87,14 @@
 (auto-insert-mode)  ;;; 启用auto-insert
 ;; 默认情况下插入模版前会循问你要不要自动插入，这里设置为不必询问，
 ;; 在新建一个org文件时，自动插入`auto-insert-directory'目录下的`org-auto-insert`文件中的内容
-(setq auto-insert-query nil)
-
+(setq auto-insert-query nil) 
 (define-auto-insert "\\.org" "org-auto-insert")
 ;;这个就是新建以.c 结尾的C文件时，会自动插入c-auto-insert文件中的内容
 (define-auto-insert "\\.c" "c-auto-insert")
-;;这个就是新建以.cpp 结尾的cpp文件时，会自动插入cpp-auto-insert文件中的内容
+;;cpp template
 (define-auto-insert "\\.cpp" "cpp-auto-insert")
+;;makefile template
+(define-auto-insert "\\file" "Makefile-auto-insert")
 
 (defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
   "expand auto-inserted content as yasnippet templete,
@@ -112,5 +113,23 @@
     )
   )
 
+(window-numbering-mode 1)
+
+;;在Emacs中激活GPG的加密功能, the file must end with ".gpg"
+(require 'epa-file)
+
+;;使用对称加密的方法, close the asymmetric way
+;;(setq epa-file-select-keys 0)
+
+;; set default coding system
+(setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+(set-language-environment 'utf-8)
+(set-keyboard-coding-system 'utf-8-mac) ; For old Carbon emacs on OS X only
+(setq locale-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(unless (eq system-type 'windows-nt)
+  (set-selection-coding-system 'utf-8))
+(prefer-coding-system 'utf-8)
 
 (provide 'init-local) ;;must have this 

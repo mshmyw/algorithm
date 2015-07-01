@@ -119,4 +119,24 @@
      (sqlite . t))))
 
 
+;;;;;;;;MSH;;;;;;;;
+
+;; org-mode set
+(require 'org-crypt)
+
+;; when save file auto encrypt region
+(org-crypt-use-before-save-magic)
+
+;; set tag, default is secret
+(setq org-crypt-tag-matcher "secret")
+
+;; avoid tag("secret") heritance by subproject
+(setq org-tags-exclude-from-inheritance (quote ("secret")))
+
+;; use UID to asymmetric encrypt or set "nil" to use symmetric encrypt
+(setq org-crypt-key "ximenchuixue (msh) <mshmayoushi@gmail.com>")
+
+;;;;;;;;MSH;;;;;;;;
+
+
 (provide 'init-org)
