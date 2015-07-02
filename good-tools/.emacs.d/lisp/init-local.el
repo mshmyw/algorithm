@@ -132,4 +132,15 @@
   (set-selection-coding-system 'utf-8))
 (prefer-coding-system 'utf-8)
 
+;;set tabbar face: color, size
+(set-face-attribute 'tabbar-selected nil  
+                    :inherit 'tabbar-default  
+                    :foreground "DarkGreen"  
+                    :background "LightGoldenrod"  
+                    :box '(:line-width 2 :color "DarkGoldenrod")  
+                    :overline "black"  
+                    :underline "black"  
+                    :weight 'bold  
+                    )
+
 (provide 'init-local) ;;must have this 
