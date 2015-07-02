@@ -21,7 +21,7 @@ void print(int a[], int n){
 
 	for (i = 0; i < n; i++){
 		printf("(%3d %3d)  ", i, a[i]);
-		if ((i + 1) % 2 == 0)
+		if ((i + 1) % 4 == 0)
 			printf("\n");
 	}
 	printf("\n");
@@ -39,12 +39,12 @@ void min_coin(int total_money, int v[], int kinds, int min_coin_value){
 	memset((int *)num, 0xffffffff, (total_money + 1) * sizeof(int));
 	num[0] = 0; //0元时候的方案为0
 
-	//当money小于最小银币值又不为0时表明没有找零方案.NOTE:没有跟值为零是不同的含义
+	//当money小于最小银币值又不为0时表明没有找零方案.NOTE:"没有"跟"值为零"是不同的含义
 	for (money = 1; money < min_coin_value; money++)
 		num[money] = -2;
 
 	for (money = min_coin_value; money <= total_money; money++){
-		min_num = (money / min_coin_value) + 1;
+		min_num = money + 1;
 		for (current = 0; current < kinds; current++){
 			/* 是:min(min_num, num[money - v[current]] + 1);而不是
 				min(min_num, num[money - v[current]]) + 1;
@@ -53,6 +53,9 @@ void min_coin(int total_money, int v[], int kinds, int min_coin_value){
 				if (num[money - v[current]] != -2)//没有方案
 					min_num = min(min_num, num[money - v[current]] + 1);
 		}
+
+        if(min_num == money + 1)
+            min_num = -2;
 		num[money] = min_num;
 	}
 
@@ -71,7 +74,7 @@ int main(){
 	/* }; */
 	int total_money = 63;
 	int value[] = {
-		3, 5, 10, 22, 26
+		5, 10, 22, 26
 	};
 
 	int kinds = sizeof(value) / sizeof(value[0]);  //dynamic get it;
