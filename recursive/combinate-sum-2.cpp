@@ -16,6 +16,7 @@ void subnets(vector<int> &s, vector<int> temp, int level,
     subnets(s, temp, level + 1, result);
     temp.push_back(s[level]);
     subnets(s, temp, level + 1, result);
+    // temp.pop_back(); //here this is not necessary
 }
 
 void find_comb_sum(vector<int> &candidates, int start, int target, vector<int> &sol, vector<vector<int> > &allSol){
@@ -53,6 +54,7 @@ int main(void){
     vector< vector<int> > result;
     vector<int> temp;
     subnets(s, temp, 0, result);
+
     vector< vector<int> >::iterator it;
     vector<int>::iterator it_inner;
     for(it = result.begin(); it != result.end(); it++){
