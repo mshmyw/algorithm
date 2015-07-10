@@ -15,7 +15,17 @@ TARGETS = run
 # OBJS = lca.o
 # OBJS = jump-game.o
 # OBJS = stock-II.o
-OBJS = unique-bst.o
+# OBJS = unique-bst.o
+# OBJS = min-unrepeat-num.o
+# OBJS = longest-palindrome.o
+ # OBJS = string-slide-windows.o
+ # OBJS = brother-str.o
+# OBJS = 5-in-1024.o
+# OBJS = max-sub-array-sum.o
+# OBJS = min-money-change.o
+# OBJS = n-combination-sum.o
+# OBJS = move-*-char.o
+OBJS = count-1-from-1-n.o
 
 LIB = -lm
 
