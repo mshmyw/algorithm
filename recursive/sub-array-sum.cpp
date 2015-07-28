@@ -35,7 +35,6 @@ void sub_sum_inner_recur(int *num, int len, int sum, int i, vector<int> &res, ve
     }
 
     sub_sum_inner_recur(num, len, sum, i + 1, res, all_res);  //without num[i]
-
     res.push_back(num[i]);
     sub_sum_inner_recur(num, len, sum - num[i], i + 1, res, all_res); //with num[i]
     res.pop_back();
@@ -63,12 +62,14 @@ void sub_sum_inner_iter(int *num, int len, int sum, int i, vector<int> &res, vec
 
 void sub_sum(int *num, int len, int sum){
     vector<vector<int> > all_res, all_res2;
-    vector<int> res;
+    vector<int> res, res2;
 
     sub_sum_inner_recur(num, len, sum, 0, res, all_res);
     print_vector(all_res);
+
     printf("--OTHER WAY--\n");
-    sub_sum_inner_recur(num, len, sum, 0, res, all_res2);
+
+    sub_sum_inner_iter(num, len, sum, 0, res2, all_res2);
     print_vector(all_res2);
     return;
 }
