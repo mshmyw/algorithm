@@ -1,0 +1,15 @@
+Name: ximenchuixue
+email: mshmayoushi@gmail.com
+
+gpg: key F9F7B12B marked as ultimately trusted
+
+gpg: /home/msh/.gnupg/trustdb.gpg: trustdb created
+gpg: key F9F7B12B marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+pub   2048R/F9F7B12B 2015-06-30
+      Key fingerprint = F701 AE59 91E4 8138 4FBB  7E85 9878 F725 F9F7 B12B
+uid                  ximenchuixue (msh) <mshmayoushi@gmail.com>
