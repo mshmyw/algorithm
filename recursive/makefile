@@ -2,10 +2,10 @@
 #created at: Mon Jun  8 08:55:16 2015
 #author:  root
 
-# CXXFLAGS = -g
-# CC = g++
-CFLAGS = -g
-CC = gcc
+CXXFLAGS = -g
+CC = g++
+# CFLAGS = -g
+# CC = gcc
 
 TARGETS = run
 # OBJS = num-seq-sum-zero.o
@@ -18,7 +18,9 @@ TARGETS = run
 # OBJS = word-maze.o
 # OBJS = fibonacci.o
 # OBJS = combinate-sum-2.o
-OBJS = reverse-list.o
+# OBJS = reverse-list.o
+# OBJS = sub-array-sum.o
+OBJS = symbol-trangles.o
 
 all: $(TARGETS)
 
