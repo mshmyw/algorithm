@@ -9,6 +9,7 @@ int rand_int(double left,  double right){
 	/* printf("T %d--", T); */
 	return T;
 }
+
 void my_sample(int M, int N){
 	int i;
 	int T;
