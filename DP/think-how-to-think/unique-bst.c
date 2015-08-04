@@ -36,14 +36,14 @@ void swap(int *a, int *b){
 void print(int *a, int n){
     int i;
     for(i = 0; i < n; i++)
-        printf("%3d", a[i]);
+        printf("%3d\n", a[i]);
 
     printf("\n");
 
     return;
 }
 
-#define N 5
+#define N 10
 int sum[N];
 
 //do you know how to think, slow to fast, simple to complex
