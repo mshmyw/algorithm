@@ -28,6 +28,7 @@ int min(int a, int b){
 #define N 10
 int max_rmq[N][3];
 
+//ST algorithm
 void rmq_preprocess(int *a){
     int i,j;
 
