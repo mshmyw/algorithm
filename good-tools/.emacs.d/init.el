@@ -26,7 +26,7 @@
 ;;----------------------------------------------------------------------------
 
 (require 'init-frame-hooks)
-(require 'init-themes)
+;; (require 'init-themes)
 ;; (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
