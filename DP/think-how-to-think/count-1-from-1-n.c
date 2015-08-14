@@ -81,7 +81,7 @@ int count_1_in_n(int n){
 
 int main(void){
 
-    int n = 100;
+    int n = 22345;
     int count = count_1_in_n(n);
     printf("count %d\n", count);
     return 0;
