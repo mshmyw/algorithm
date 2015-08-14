@@ -26,6 +26,12 @@ void sqr_it2(Tr *ob){
     ob->set_i(ob->get_i() * ob->get_i());
     cout<<"in sqrt_it2, i ="<<ob->get_i()<<endl;
 }
+
+void sqr_it3(Tr &ob){
+    ob.set_i(ob.get_i() * ob.get_i());
+    cout<<"in sqrt_it2, i ="<<ob.get_i()<<endl;
+}
+
 int main(void){
 
     Tr obj(10);
@@ -33,6 +39,8 @@ int main(void){
     sqr_it1(obj);
     cout<<"after sqr_it1, i = "<<obj.get_i()<<endl;
     sqr_it2(&obj);
+    cout<<"after sqr_it2, i = "<<obj.get_i()<<endl;
+    sqr_it3(obj);
     cout<<"after sqr_it2, i = "<<obj.get_i()<<endl;
 
     return 0;
