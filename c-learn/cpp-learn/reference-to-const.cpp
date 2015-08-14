@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<vector>
+#include<string.h>
 #include<string>
 using namespace std;
 
@@ -32,7 +33,27 @@ void sqr_it3(Tr &ob){
     cout<<"in sqrt_it2, i ="<<ob.get_i()<<endl;
 }
 
+
+class CPC{
+public:
+    CPC(){pBuff = NULL; nSize = 0;}
+    ~CPC(){delete [] pBuff;}
+    CPC(const CPC &theone){//in CPC has pointer, so need to COPY constructer
+        nSize = theone.nSize;
+        pBuff = new char[nSize];
+        memcpy(pBuff, theone.pBuff, nSize);
+    }
+
+    void Init(int n){pBuff = new char[n]; nSize = n;}
+private:
+    char *pBuff;
+    int nSize;
+};
+
 int main(void){
+    CPC theone;
+    theone.Init(40);
+    CPC theother = theone;
 
     Tr obj(10);
     cout<<"before sqr_it, i = "<<obj.get_i()<<endl;
