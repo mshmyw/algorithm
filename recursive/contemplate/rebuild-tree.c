@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include <assert.h>
 
 typedef int bool;
@@ -87,14 +88,41 @@ void print_tree(PNODE root){
     print_tree(root->lchd);
     print_tree(root->rchd);
 }
+/*  get the max abs(a - b) in binary tree*/
+int max_diff = 0;
+int max_value;
+int min_value;
+void get_max_diff_inner(PNODE root){
+    if(root == NULL)
+        return;
 
+    min_value = min(root->value, min_value);
+    max_value = max(root->value, max_value);
+    max_diff = max_value - min_value;
+    printf("min_value %d max_diff %d\n", min_value, max_diff);
+    get_max_diff_inner(root->lchd);
+    get_max_diff_inner(root->rchd);
+    return;
+}
+void get_max_diff(PNODE root){
+    if(root == NULL)
+        return;
+    max_value = root->value;
+    min_value = root->value;
+    max_diff = 0;
+    get_max_diff_inner(root);
+    return;
+}
 int main(void){
 
-    int preorder[] = {1, 2, 4, 7, 3, 5, 6, 8};
+    int preorder[] = {10, 2, 4, 7, 3, 5, 6, 8};
     int n = sizeof(preorder) / sizeof(preorder[0]);
-    int inorder[] = {4, 7, 2, 1, 5, 3, 8, 6};
+    int inorder[] = {4, 7, 2, 10, 5, 3, 8, 6};
 
     PNODE root = rebuild_tree(preorder, inorder, n);
     print_tree(root);
+    printf("\n");
+    get_max_diff(root);
+    printf("MAX DIFF %d", max_diff);
     return 0;
 }
