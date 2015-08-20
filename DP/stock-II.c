@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include <assert.h>
 
 typedef int bool;
@@ -70,7 +71,8 @@ void max_profit(int *a, int n){
 }
 int main(void){
 
-    int a[] = {1, 3, 4, 2, 5, 8, 7, 6};
+    /* int a[] = {1, 3, 4, 2, 5, 8, 7, 6}; */
+    int a[] = {10, 2, 4, 7, 3, 5, 6, 8};
     int n = sizeof(a) / sizeof(a[0]);
 
     max_profit(a, n);
