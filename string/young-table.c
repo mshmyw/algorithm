@@ -63,7 +63,8 @@ void search(int *y_tbl, int m, int n, int item){
 
     search_young_table(y_tbl, m, n, 0, n - 1, item);
     search_young_table_iter(y_tbl, m, n, item);
-    return;
+
+   return;
 }
 
 int main(void){
