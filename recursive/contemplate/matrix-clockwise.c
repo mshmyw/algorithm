@@ -51,16 +51,16 @@ void print(int *a, int n){
 /*     {13, 14, 15, 16} */
 /* }; */
 
-int a[N][N] = {
+int a[N - 1][N] = {
     {1, 2, 3, 4, 5},
     {6, 7, 8, 9, 10},
     {11, 12, 13, 14, 15},
-    {16, 17, 18, 19, 20},
-    {21, 22, 23, 24, 25}
+    {16, 17, 18, 19, 20}
+    /* {21, 22, 23, 24, 25} */
 };
 
 void matrix_clockwise(int r_left, int r_right, int c_left, int c_right){
-    if(r_left > r_right)
+ ll   if(r_left > r_right || c_left > c_right)
         return;
 
     int i, j;
@@ -87,7 +87,7 @@ void matrix(int m, int n){
 
 int main(void){
 
-    matrix(N, N);
+    matrix(N - 1, N);
 
     return 0;
 }
