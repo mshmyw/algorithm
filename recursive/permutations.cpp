@@ -43,7 +43,7 @@ void print_iterator(vector< vector<int> > result){
 
 }
 int main(void){
-    int array[] = {1, 2, 3};
+    int array[] = {1, 1, 2, 3};
     int n = sizeof(array) / sizeof(array[0]);
     vector<int> num(array, array + n);
     vector< vector<int> > result;
