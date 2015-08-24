@@ -46,6 +46,24 @@ void print(int *a, int n){
 #define N 64
 char res[N];
 bool visited[N];
+void str_combination_inner(const char *str, int k, int i){
+    if(str[k] == '\0'){
+        res[i] = '\0';
+        printf("-%s-\n", res);
+        return;
+    }
+    
+    str_combination_inner(str, k + 1, i);
+    res[i] = str[k];
+    str_combination_inner(str, k + 1, i + 1);
+    return;
+}
+
+void str_combination(const char *str){
+
+    str_combination_inner(str, 0, 0);
+    return;
+}
 void str_permutaion_inner(const char *str, int k){
     if(str[k] == '\0'){
         res[k] = '\0';
@@ -61,7 +79,6 @@ void str_permutaion_inner(const char *str, int k){
             str_permutaion_inner(str, k + 1);
             visited[i] = false;
         }
-
         return;
 }
 
@@ -72,8 +89,8 @@ void str_permutaion(const char *str){
 }
 
 int main(void){
-
-    const char *str = "abcdefg";
-    str_permutaion(str);
+    const char *str = "abcd";
+    /* str_permutaion(str); */
+    str_combination(str);
     return 0;
 }
