@@ -28,7 +28,7 @@ void subnets_for(vector<int> &s, vector<int> temp, int level,
     int i;
     for(i = level; i < s.size(); i++){
         temp.push_back(s[i]);
-        subnets(s, temp, i + 1, result);
+        subnets(s, temp, i + 1, result);  // can't understand this msh ???
         temp.pop_back();
     }
 
