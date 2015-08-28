@@ -6,17 +6,15 @@ int major_find(int *a, int n){
     int candidate = a[0];
     int i;
 
-    for(i = 0; i < n; i++){
-        if(candidate == a[i])
-            count++;
-        else{
-            if(count == 0){
+    for(i = 0; i < n; i++)
+        if(count == 0){
                 count = 1;
                 candidate = a[i];
-            }else
-                count--;
-        }
-    }
+        }else if(a[i] == candidate)
+            count++;
+        else
+            count--;
+
     count = 0;
     for(i = 0; i < n ; ++i)
         if(a[i] == candidate)
@@ -28,7 +26,7 @@ int major_find(int *a, int n){
 }
 
 int main(void){
-    int a[] = {3, 3, 4, 2, 4, 4, 2, 4, 4, 5};
+    int a[] = {3, 4, 3, 4, 2, 4, 4, 2, 4,  4, 5};
     int n = sizeof(a) / sizeof(a[0]);
 
     int major_element = major_find(a, n);
