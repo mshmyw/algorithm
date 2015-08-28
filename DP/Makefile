@@ -14,8 +14,8 @@ TARGETS = run
 # OBJS = rmq.o
 # OBJS = lca.o
 # OBJS = jump-game.o
-# OBJS = stock-II.o
-OBJS = min-money-make-change-ok.o
+OBJS = stock-II.o
+# OBJS = min-money-make-change-ok.o
 
 LIB = -lm
 
