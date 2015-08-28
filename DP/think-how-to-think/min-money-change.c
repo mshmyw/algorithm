@@ -90,11 +90,11 @@ void min_money_change(int *value, int count, int money){
     return;
 }
 int main(void){
-    int value[] = {3, 5, 10, 22, 26}; //before dp, the value must have the right sequence: from small to big.
-    /* int value[] = {3, 5}; //before dp, the value must have the right sequence: from small to big. */
+    /* int value[] = {3, 5, 10, 22, 26}; //before dp, the value must have the right sequence: from small to big. */
+    int value[] = {3, 5}; //before dp, the value must have the right sequence: from small to big.
     int n = sizeof(value) / sizeof(value[0]);
 
-    int total_money = 63;
+    int total_money = 216;
 
     min_money_change(value, n, total_money);
 
