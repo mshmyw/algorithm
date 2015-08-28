@@ -18,16 +18,17 @@ TARGETS = run
 # OBJS = word-maze.o
 # OBJS = fibonacci.o
 # OBJS = combinate-sum-2.o
-# OBJS = reverse-list.o
+OBJS = stl-list.o
 # OBJS = sub-array-sum.o
-OBJS = symbol-trangles.o
+# OBJS = symbol-trangles.o
+# OBJS = buy-book-greed-failed.o
 
 all: $(TARGETS)
 
 $(TARGETS): $(OBJS)
 	$(CC) -o $@ $^
 	$(RM) $(OBJS)
-	@for i in {1..10}; do echo "i" $$i; ./run; done
+	@for i in {1..2}; do echo "i" $$i; ./run; done
 	@$(RM) $(TARGETS)
 clean:
 	$(RM) $(OBJS) $(TARGETS)
