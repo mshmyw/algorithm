@@ -16,7 +16,8 @@ TARGETS = run
 # OBJS = jump-game.o
 # OBJS = stock-II.o
 # OBJS = min-money-make-change-ok.o
-OBJS = select-kth.o
+# OBJS = select-kth.o
+OBJS = unique-sample.o
 
 LIB = -lm
 
