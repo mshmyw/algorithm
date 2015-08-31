@@ -17,7 +17,8 @@ TARGETS = run
 # OBJS = stock-II.o
 # OBJS = min-money-make-change-ok.o
 # OBJS = heap-learn.o
-OBJS = robot.o
+# OBJS = robot.o
+OBJS = matrix-path.o
 
 LIB = -lm
 
