@@ -10,7 +10,9 @@
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require 'init-benchmarking) ;; Measure startup time
+
+;;MSH 原来是这里测试启动时间导致emacs关闭有编码警告：请设置默认编码（chinese-gbk or something）。。。。。只需要将下面注释掉即可
+;; (require 'init-benchmarking) ;; Measure startup time
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
