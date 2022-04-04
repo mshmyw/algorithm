@@ -3,6 +3,7 @@
  * 递归
  */
 
+// 数组形式
 const _dfsTraverse = (numList: number[], rootIndex: number, targetValue: number) => {
   const len = numList.length;
   if (rootIndex > len - 1) {
