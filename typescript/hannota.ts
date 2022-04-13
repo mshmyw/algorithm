@@ -38,7 +38,7 @@ const hannuota = (
   //   numC
   // );
 
-  // 2 把第 n 个盘子由 A 移到 C；
+  // 2 把第 n 个盘子由 A 移到 C；（!其实真正具有可操作性的就是此步）
   const numN = numA.data.pop();
   numC.data.push(numN);
   console.log(
