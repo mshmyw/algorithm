@@ -148,3 +148,27 @@ const printVertex = (vertice: string) => {
   console.log("V ", vertice);
 }
 depthFirstSearch(graph, printVertex);
+
+
+/** 
+ * 有向图
+ *    A     B
+ *  /  \  /  \
+ * C    D    E
+ *  \       /
+ *   \    / 
+ *     F   
+*/
+const graph1 = new Graph(true); // 有向图
+const myVertices1 = ['A', 'B', 'C', 'D', 'E', 'F'];
+for (let i = 0; i < myVertices.length; i++) {
+  graph1.addVertex(myVertices1[i]);
+}
+graph1.addEdge('A', 'C');
+graph1.addEdge('A', 'D');
+graph1.addEdge('B', 'D');
+graph1.addEdge('B', 'E');
+graph1.addEdge('C', 'F');
+graph1.addEdge('F', 'E');
+
+depthFirstSearch(graph1, printVertex);
